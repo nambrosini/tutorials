@@ -2,13 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example-app-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/issuer: letsencrypt-cluster-issuer
+    certmanager.k8s.io/acme-challenge-type: http01
 spec:
   tls:
   - hosts:
-    - nambrosini.xzy
-    secretName: example-app-tls
+    - nambrosini.xyz
+    secretName: example-app-certificate
   rules:
-    - host: nambrosini.xzy
+    - host: nambrosini.xyz
       http:
         paths:
         - pathType: Prefix

@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: certificate
+spec:
+  # Secret names are always required.
+  secretName: staging-tls
+  # At least one of a DNS Name, URI, or IP address is required.
+  dnsNames:
+    - nambrosini.xyz
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
